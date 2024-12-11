@@ -15,20 +15,28 @@ function App() {
   }, []);
 
   const fetchCampaigns = async () => {
-    const response = await axios.get("http://localhost:10000/api/campaigns");
+    const response = await axios.get(
+      "https://mini-hackathon-backend.onrender.com/api/campaigns"
+    );
     setCampaigns(response.data);
   };
 
   const createCampaign = async () => {
-    await axios.post("http://localhost:10000/api/campaigns", newCampaign);
+    await axios.post(
+      "https://mini-hackathon-backend.onrender.com/api/campaigns",
+      newCampaign
+    );
     setNewCampaign({ title: "", description: "", goal: "", image: "" });
     fetchCampaigns();
   };
 
   const donate = async (id, amount) => {
-    await axios.post(`http://localhost:10000/api/campaigns/donate/${id}`, {
-      amount,
-    });
+    await axios.post(
+      `https://mini-hackathon-backend.onrender.com/api/campaigns/donate/${id}`,
+      {
+        amount,
+      }
+    );
     fetchCampaigns();
   };
 
