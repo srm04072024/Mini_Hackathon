@@ -15,18 +15,18 @@ function App() {
   }, []);
 
   const fetchCampaigns = async () => {
-    const response = await axios.get("http://localhost:5000/api/campaigns");
+    const response = await axios.get("http://localhost:10000/api/campaigns");
     setCampaigns(response.data);
   };
 
   const createCampaign = async () => {
-    await axios.post("http://localhost:5000/api/campaigns", newCampaign);
+    await axios.post("http://localhost:10000/api/campaigns", newCampaign);
     setNewCampaign({ title: "", description: "", goal: "", image: "" });
     fetchCampaigns();
   };
 
   const donate = async (id, amount) => {
-    await axios.post(`http://localhost:5000/api/campaigns/donate/${id}`, {
+    await axios.post(`http://localhost:10000/api/campaigns/donate/${id}`, {
       amount,
     });
     fetchCampaigns();
